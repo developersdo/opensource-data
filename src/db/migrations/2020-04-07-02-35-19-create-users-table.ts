@@ -1,7 +1,7 @@
 import { QueryInterface, DataTypes } from 'sequelize'
 
 export default {
-  up: async (queryInterface: QueryInterface) => {
+  up: async (queryInterface: QueryInterface): Promise<void> => {
     return queryInterface.createTable('users', {
       id: {
         type: DataTypes.INTEGER,
@@ -21,7 +21,7 @@ export default {
       scrapedAt: { type: DataTypes.DATE },
     })
   },
-  down: async (queryInterface: QueryInterface) => {
+  down: async (queryInterface: QueryInterface): Promise<void> => {
     queryInterface.dropTable('users')
   },
 }

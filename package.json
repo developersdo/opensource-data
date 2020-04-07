@@ -8,6 +8,9 @@
     "@types/bluebird": "^3.5.30",
     "@types/node": "^13.11.0",
     "@types/validator": "^12.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "prettier": "^2.0.2",
     "pretty-quick": "^2.0.1",
@@ -25,7 +28,8 @@
     "premigrations:build": "npm run clean",
     "migrations:build": "tsc ./src/db/migrations/* -outDir ./build/migrations",
     "premigrations:run": "npm run migrations:build",
-    "migrations:run": "sequelize db:migrate"
+    "migrations:run": "sequelize db:migrate",
+    "lint": "eslint . --ext .js,.ts"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 const [, , suffix] = process.argv
-const getCurrentDateWithDashes = () =>
+const getCurrentDateWithDashes = (): string =>
   new Date()
     .toISOString()
     .split('.')[0]

@@ -1,10 +1,17 @@
 import { QueryInterface, DataTypes } from 'sequelize'
 
 export default {
-  up: async (queryInterface: QueryInterface) => {
-    // Write migration code here.
+  up: async (queryInterface: QueryInterface): Promise<void> => {
+    return queryInterface.createTable('table', {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+    })
   },
-  down: async (queryInterface: QueryInterface) => {
-    // If migration fails, this will be called. Rollback your migration changes.
+  down: async (queryInterface: QueryInterface): Promise<void> => {
+    return queryInterface.dropTable('table')
   },
 }

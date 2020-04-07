@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Data source for https://developersdo.github.com/opensource",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "@types/bluebird": "^3.5.30",
     "@types/node": "^13.11.0",
     "@types/validator": "^12.0.1",
@@ -24,6 +23,7 @@
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./build",

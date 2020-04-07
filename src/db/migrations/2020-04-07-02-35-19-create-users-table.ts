@@ -1,0 +1,27 @@
+import { QueryInterface, DataTypes } from 'sequelize'
+
+export default {
+  up: async (queryInterface: QueryInterface) => {
+    return queryInterface.createTable('users', {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      originalId: { type: DataTypes.STRING },
+      login: { type: DataTypes.STRING, unique: 'usersLoginIndex' },
+      name: { type: DataTypes.STRING },
+      type: { type: DataTypes.STRING },
+      url: { type: DataTypes.STRING },
+      avatarUrl: { type: DataTypes.STRING },
+      company: { type: DataTypes.STRING },
+      location: { type: DataTypes.STRING },
+      createdAt: { type: DataTypes.DATE },
+      scrapedAt: { type: DataTypes.DATE },
+    })
+  },
+  down: async (queryInterface: QueryInterface) => {
+    queryInterface.dropTable('users')
+  },
+}

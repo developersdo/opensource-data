@@ -1,0 +1,29 @@
+name: Scrape
+
+on:
+  
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/5 * * * *'
+
+env:
+  NODE_ENV: production
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: master
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - run: npm run migrations:run
+    - run: npm run scrape
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with: 
+        commit_message: Update database.
+        branch: master

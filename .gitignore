@@ -105,3 +105,4 @@ dist
 
 src/db/data-development.sqlite
 build
+.env

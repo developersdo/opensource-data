@@ -19,6 +19,11 @@ export default {
       location: { type: DataTypes.STRING },
       createdAt: { type: DataTypes.DATE },
       scrapedAt: { type: DataTypes.DATE },
+      followers: { type: DataTypes.INTEGER },
+      following: { type: DataTypes.INTEGER },
+      sources: { type: DataTypes.INTEGER },
+      forked: { type: DataTypes.INTEGER },
+      collaborations: { type: DataTypes.INTEGER },
     })
   },
   down: async (queryInterface: QueryInterface): Promise<void> => {

@@ -29,6 +29,7 @@ export const createOrUpdateUsers = async (users: Partial<User>[]): Promise<void>
     users.map(async (user) => {
       const whereQuery = { where: { originalId: user.originalId ?? null } }
       const existingUser = await User.findOne(whereQuery)
+
       if (existingUser) {
         await User.update(user, whereQuery)
         console.debug(`Updated user: ${user.login}`)

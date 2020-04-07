@@ -1,6 +1,6 @@
-# opensource-data
+# Opensource Data
 
-Data source for developersdo.github.com/opensource
+Data source for [developersdo.github.com/opensource](https://developersdo.github.com/opensource)
 
 ## Development
 

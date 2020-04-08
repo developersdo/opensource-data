@@ -7,6 +7,7 @@ on:
 
 env:
   NODE_ENV: production
+  OSD_GH_TOKEN: ${{ secrets.OSD_GH_TOKEN }}
 
 jobs:
   scrape:
@@ -14,10 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Use Node.js v13.12.0
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: v13.12.0
         env:
           RUNNER_TEMP: '/tmp/'
       - run: npm i

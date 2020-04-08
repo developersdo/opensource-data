@@ -3,7 +3,7 @@ name: Scrape
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: '*/5 * * * *'
+    - cron: '0 * * * *'
 
 env:
   NODE_ENV: production

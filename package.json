@@ -10,6 +10,7 @@
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "graphql-request": "^1.8.2",
@@ -25,7 +26,9 @@
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/ejs": "^3.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./build",

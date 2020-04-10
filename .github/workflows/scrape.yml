@@ -23,7 +23,8 @@ jobs:
       - run: npm i
       - run: npm run migrations:run
       - run: npm run scrape
+      - run: npm run generate
       - uses: stefanzweifel/git-auto-commit-action@v4.1.2
         with:
-          commit_message: Update database.
+          commit_message: Update data.
           branch: master

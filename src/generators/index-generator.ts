@@ -10,6 +10,7 @@ export const generateIndex = async (): Promise<void> => {
       title: 'Opensource Data',
       githubLink: 'https://github.com/developersdo/opensource-data',
       dataSources: ['users.json'],
+      lastUpdated: new Date(),
     }
 
     ejs.renderFile(templatePath, data, (error, rendered) => {

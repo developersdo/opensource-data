@@ -10,6 +10,7 @@ export const config = {
       'developersdo',
       'sorribas',
       'amejia481',
+      'ericktamayo',
     ],
     excludes: [],
   },

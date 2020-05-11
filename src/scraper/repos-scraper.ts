@@ -5,6 +5,9 @@ import { logRateLimit } from './utils/log-rate-limit'
 import { Repo } from '../db/models/Repo'
 import { searchReposQuery, SearchReposQueryResponse } from './queries/search-repos'
 import { User } from '../db/models/User'
+import { createDebug } from '../utils/debug'
+
+const debug = createDebug(__filename)
 
 const createOrUpdateRepos = async (repos: Partial<Repo>[]): Promise<void> => {
   await Promise.all(
@@ -14,10 +17,10 @@ const createOrUpdateRepos = async (repos: Partial<Repo>[]): Promise<void> => {
 
       if (existingRepo) {
         await Repo.update(repo, whereQuery)
-        console.debug(`Updated repo: ${repo.name}`)
+        debug(`Updated repo: ${repo.name}`)
       } else {
         await Repo.create(repo)
-        console.debug(`Created repo: ${repo.name}`)
+        debug(`Created repo: ${repo.name}`)
       }
     })
   )
@@ -28,7 +31,7 @@ const searchReposFromUsers = async (
   after: string | undefined,
   fn: (results: SearchReposQueryResponse) => Promise<void>
 ): Promise<void> => {
-  console.debug('Scrape repos for users:', users)
+  debug('Scrape repos for users:', users)
 
   const query = users.map((user) => `user:${user}`).join(' ')
   const results = await client.request<SearchReposQueryResponse>(searchReposQuery, {

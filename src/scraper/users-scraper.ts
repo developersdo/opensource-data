@@ -3,13 +3,16 @@ import { searchUsersQuery, SearchUsersQueryResponse } from './queries/search-use
 import { logRateLimit } from './utils/log-rate-limit'
 import { User } from '../db/models/User'
 import { config } from '../config'
+import { createDebug } from '../utils/debug'
+
+const debug = createDebug(__filename)
 
 const searchUsers = async (
   query: string,
   after: string | undefined,
   fn: (results: SearchUsersQueryResponse) => Promise<void>
 ): Promise<void> => {
-  console.debug(`Searching users:`, { query, after })
+  debug(`Searching users:`, { query, after })
 
   const results = await client.request<SearchUsersQueryResponse>(searchUsersQuery, {
     query,
@@ -32,10 +35,10 @@ const createOrUpdateUsers = async (users: Partial<User>[]): Promise<void> => {
 
       if (existingUser) {
         await User.update(user, whereQuery)
-        console.debug(`Updated user: ${user.login}`)
+        debug(`Updated user: ${user.login}`)
       } else {
         await User.create(user)
-        console.debug(`Created user: ${user.login}`)
+        debug(`Created user: ${user.login}`)
       }
     })
   )

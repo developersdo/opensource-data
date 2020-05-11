@@ -3,7 +3,7 @@ import { searchUsersQuery, SearchUsersQueryResponse } from './queries/search-use
 import { logRateLimit } from './utils/log-rate-limit'
 import { User } from '../db/models/User'
 
-const userLocations = ['location:"Dominican"']
+const userLocations = ['location:"Dominican"', 'location:"santo domingo"']
 
 const searchUsers = async (
   query: string,

@@ -41,7 +41,7 @@ export type SearchUsersQueryResponse = {
     total: number
     nodes: [
       {
-        __typename: 'User'
+        __typename: 'User' | 'Organization'
         id: string
         login: string
         name: string

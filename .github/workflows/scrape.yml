@@ -3,6 +3,8 @@ name: Scrape
 on:
   schedule:
     - cron: '0 * * * *'
+  repository_dispatch:
+    types: [trigger]
 
 env:
   NODE_ENV: production

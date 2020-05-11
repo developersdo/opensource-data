@@ -9,6 +9,7 @@ export const config = {
       'davidtavarez',
       'developersdo',
       'sorribas',
+      'amejia481',
     ],
     excludes: [],
   },

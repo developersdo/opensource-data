@@ -1,14 +1,24 @@
+import { argv } from 'yargs'
+
 require('dotenv').config()
 import '../db/connection'
 
 import { scrapeUsers } from '../scraper/users-scraper'
+import { scrapeRepos } from '../scraper/repos-scraper'
 
 const scrape = async (): Promise<void> => {
   try {
-    await scrapeUsers()
-    console.log('Finished scraping users.')
+    if (argv.only && argv.only === 'users') {
+      await scrapeUsers()
+      console.log('Finished scraping users.')
+    }
+
+    if (argv.only && argv.only === 'repos') {
+      await scrapeRepos()
+      console.log('Finished scraping repos.')
+    }
   } catch (error) {
-    console.error('Could not scrape users.', error)
+    console.error('An error ocurred while scraping data.', error)
   }
 }
 

@@ -11,20 +11,21 @@ const searchUsers = async (
   fn: (results: SearchUsersQueryResponse) => Promise<void>
 ): Promise<void> => {
   console.debug(`Searching users:`, { query, after })
+
   const results = await client.request<SearchUsersQueryResponse>(searchUsersQuery, {
     query,
     after,
   })
 
-  await fn(results)
   logRateLimit(results)
+  await fn(results)
 
   if (results.search.pageInfo.hasNextPage) {
     await searchUsers(query, results.search.pageInfo.endCursor, fn)
   }
 }
 
-export const createOrUpdateUsers = async (users: Partial<User>[]): Promise<void> => {
+const createOrUpdateUsers = async (users: Partial<User>[]): Promise<void> => {
   await Promise.all(
     users.map(async (user) => {
       const whereQuery = { where: { originalId: user.originalId ?? null } }

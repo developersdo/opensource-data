@@ -9,19 +9,20 @@
 </head>
 
 <body>
-  <h1>Opensource Data</h1>
-  <a href="<%= githubLink %>">View in GitHub</a>
+  <h1><a href="<%= githubLink %>">Opensource Data</a></h1>
   <h2>Data Sources</h2>
-  <p><strong>Updated:</strong> <%= lastUpdated %></p>
   <% if (dataSources) { %>
   <ul>
     <% dataSources.forEach(dataSource => { %>
-    <li><a href="<%= `./${dataSource}` %>"><%= dataSource %></a></li>
+    <li><a href="<%= `./${dataSource.filename}` %>"><%= dataSource.filename %> <%= dataSource.size %> (gzip:
+        <%= dataSource.gzipSize %>)</a>
+    </li>
     <% }) %>
   </ul>
   <% } else { %>
   <p>There are no data sources.</p>
   <% } %>
+  <p><strong>Last Updated:</strong> <%= lastUpdated %></p>
 </body>
 
 </html>

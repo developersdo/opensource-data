@@ -64,5 +64,16 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
 
+      # TODO: Remove when GitHub officially includes their v1.0.0 hub CLI.
+      - name: Install GitHub CLI
+        run: |
+          apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          apt update
+          apt install software-properties-common -y
+          apt-add-repository https://cli.github.com/packages
+          apt update
+          apt install gh -y
+          gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create release
         run: gh release create v${{ steps.date.outputs.date }} --title v${{ steps.date.outputs.date }} 'docs/repos.json#Repositories' 'docs/users.json#Users' --notes 'Data auto-updated at ${{ steps.date.outputs.date }}.'

@@ -1,4 +1,5 @@
 import { GraphQLClient } from 'graphql-request'
+import 'cross-fetch/polyfill'
 
 export const client = new GraphQLClient('https://api.github.com/graphql', {
   headers: {

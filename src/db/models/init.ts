@@ -6,7 +6,7 @@ export const initModel = (sequelize: Sequelize): void => {
   User.init(
     {
       id: {
-        type: DataTypes.INTEGER.UNSIGNED,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
@@ -30,7 +30,7 @@ export const initModel = (sequelize: Sequelize): void => {
   )
   Repo.init(
     {
-      id: { type: DataTypes.INTEGER.UNSIGNED, autoIncrement: true, primaryKey: true },
+      id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
       originalId: { type: DataTypes.STRING },
       name: { type: DataTypes.STRING },
       description: { type: DataTypes.STRING },

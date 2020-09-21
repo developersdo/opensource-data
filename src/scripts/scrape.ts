@@ -1,6 +1,8 @@
+import dotenv = require('dotenv')
+dotenv.config()
+
 import { argv } from 'yargs'
 
-require('dotenv').config()
 import '../db/connection'
 
 import { scrapeUsers } from '../scraper/users-scraper'

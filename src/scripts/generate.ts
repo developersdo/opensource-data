@@ -1,4 +1,6 @@
-require('dotenv').config()
+import dotenv = require('dotenv')
+dotenv.config()
+
 import '../db/connection'
 import { generateUsers } from '../generators/users-generator'
 import { generateIndex } from '../generators/index-generator'

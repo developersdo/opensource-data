@@ -1,4 +1,4 @@
-name: Scrape data each hours
+name: Scrape and generate data each hours
 
 on:
   schedule:
@@ -51,29 +51,8 @@ jobs:
       - name: Generate data
         run: npm run generate
 
-      - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto-update data.
           branch: master
-  # release:
-  #   runs-on: ubuntu-latest
-  #   needs: scrape
-
-  # steps:
-  #   - name: Get current date
-  #     id: date
-  #     run: echo "::set-output name=date::$(date +'%Y.%m.%d')"
-
-  #   # TODO: Remove when GitHub officially includes their v1.0.0 hub CLI.
-  #   - name: Install GitHub CLI
-  #     run: |
-  #       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-  #       sudo apt update
-  #       sudo apt install software-properties-common -y
-  #       sudo apt-add-repository https://cli.github.com/packages
-  #       sudo apt update
-  #       sudo apt install gh -y
-  #       gh auth login --with-token ${{ secrets.GITHUB_TOKEN }}
-
-  #   - name: Create release
-  #     run: gh release create v${{ steps.date.outputs.date }} --title v${{ steps.date.outputs.date }} 'docs/repos.json#Repositories' 'docs/users.json#Users' --notes 'Data auto-updated at ${{ steps.date.outputs.date }}.'
+          push_options: '--force'

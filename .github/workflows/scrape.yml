@@ -1,0 +1,57 @@
+name: Scrape data each hours
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  repository_dispatch:
+    types: [trigger]
+
+env:
+  NODE_ENV: production
+  OSD_GH_TOKEN: ${{ secrets.OSD_GH_TOKEN }}
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Run data migrations
+        run: npm run migrations:run
+
+      - name: Scrape data
+        run: npm run scrape
+
+      - name: Generate data
+        run: npm run generate
+
+      - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        with:
+          commit_message: Auto-update data.
+          branch: master

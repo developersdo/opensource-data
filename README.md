@@ -1,6 +1,6 @@
 # Opensource Data
 
-Data source for [opensource frontend](https://developersdo.github.com/opensource). This repo **[scrape data hourly](https://github.com/developersdo/opensource-data/actions)** and **[publish it as JSON files](https://developersdo.github.io/opensource-data/)**.
+Data source for [opensource frontend](https://developersdo.github.io/opensource). This repo **[scrape data hourly](https://github.com/developersdo/opensource-data/actions)** and **[publish it as JSON files](https://developersdo.github.io/opensource-data/)**.
 
 ## Usage
 

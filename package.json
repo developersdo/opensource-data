@@ -27,7 +27,7 @@
     "pretty-bytes": "^5.4.1",
     "pretty-quick": "^3.0.2",
     "rimraf": "^3.0.2",
-    "sequelize": "^6.3.5",
+    "sequelize": "^6.29.0",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.0",
     "ts-node": "^9.0.0",

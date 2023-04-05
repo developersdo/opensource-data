@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <h1><a href="<%= githubLink %>">Opensource Data</a></h1>
+  <h2>Data Sources</h2>
+  <% if (dataSources) { %>
+  <ul>
+    <% dataSources.forEach(dataSource => { %>
+    <li><a href="<%= `./${dataSource.filename}` %>"><%= dataSource.filename %> <%= dataSource.size %> (gzip:
+        <%= dataSource.gzipSize %>)</a>
+    </li>
+    <% }) %>
+  </ul>
+  <% } else { %>
+  <p>There are no data sources.</p>
+  <% } %>
+  <p><strong>Last Updated:</strong> <%= lastUpdated %></p>
+</body>
+
+</html>

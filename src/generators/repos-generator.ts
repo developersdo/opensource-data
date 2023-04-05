@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import gzipSize from 'gzip-size'
+import { gzipSize } from 'gzip-size'
 import prettyBytes from 'pretty-bytes'
 
 import { Repo } from '../db/models/Repo'

@@ -15,20 +15,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Read .nvmrc
         run: echo ::set-output name=NVMRC::$(cat .nvmrc)
         id: nvm
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '${{ steps.nvm.outputs.NVMRC }}'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
@@ -51,7 +51,7 @@ jobs:
       - name: Generate data
         run: npm run generate
 
-      - uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto-update data.
           branch: master

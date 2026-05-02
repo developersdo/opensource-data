@@ -55,6 +55,9 @@ jobs:
       - name: Generate data
         run: npm run generate
 
+      - name: Pull latest changes before commit
+        run: git pull --rebase origin master
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto-update data.

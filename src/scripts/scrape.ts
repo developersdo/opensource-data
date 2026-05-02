@@ -15,13 +15,13 @@ const scrape = async (): Promise<void> => {
   try {
     const scrapeAll = !('only' in argv)
     const scrapeOnlyUsers = 'only' in argv && (!argv.only || (argv.only && argv.only === 'users'))
-    if (scrapeAll && scrapeOnlyUsers) {
+    if (scrapeAll || scrapeOnlyUsers) {
       await scrapeUsers()
       console.log('Finished scraping users.')
     }
 
     const scrapeOnlyRepos = 'only' in argv && (!argv.only || (argv.only && argv.only === 'repos'))
-    if (scrapeAll && scrapeOnlyRepos) {
+    if (scrapeAll || scrapeOnlyRepos) {
       await scrapeRepos()
       console.log('Finished scraping repos.')
     }

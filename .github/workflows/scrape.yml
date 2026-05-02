@@ -15,11 +15,14 @@ jobs:
   scrape:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Read .nvmrc
-        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        run: echo "NVMRC=$(cat .nvmrc)" >> $GITHUB_OUTPUT
         id: nvm
 
       - name: Setup node
@@ -51,6 +54,9 @@ jobs:
 
       - name: Generate data
         run: npm run generate
+
+      - name: Pull latest changes before commit
+        run: git pull --rebase origin master
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:

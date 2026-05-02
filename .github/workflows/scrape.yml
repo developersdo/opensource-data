@@ -5,6 +5,7 @@ on:
     - cron: '0 * * * *'
   repository_dispatch:
     types: [trigger]
+  workflow_dispatch:
 
 env:
   NODE_ENV: production
